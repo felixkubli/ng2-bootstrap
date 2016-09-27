@@ -9,7 +9,7 @@ let template = require('./dropdown-demo.html');
 })
 export class DropdownDemoComponent {
   public disabled:boolean = false;
-  public status:{isopen:boolean} = {isopen: false};
+  public status:{isopen:boolean, isOpenedByButton:boolean} = {isopen: false, isOpenedByButton: false};
   public items:Array<string> = ['The first choice!',
     'And another choice for you.', 'but wait! A third!'];
 
@@ -20,6 +20,7 @@ export class DropdownDemoComponent {
   public toggleDropdown($event:MouseEvent):void {
     $event.preventDefault();
     $event.stopPropagation();
-    this.status.isopen = !this.status.isopen;
+    this.status.isOpenedByButton = !this.status.isOpenedByButton;
+    this.status.isopen = this.status.isOpenedByButton;
   }
 }
